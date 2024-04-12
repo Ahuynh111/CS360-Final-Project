@@ -367,12 +367,12 @@
           })
 
         })
-  //Timeline Chart of US Imports and US Exports
+  //Timeline Chart of Farming Information
       const svgHLine = 800;
-      const svgWLine = 1100;
-      const marginsLine = {top: 70, bottom: 70, left: 70, right: 70};
-      const HLine = svgH - marginsLine.bottom - marginsLine.top;
-      const WLine = svgW - marginsLine.left - marginsLine.right;
+      const svgWLine = 1000;
+      const marginsLine = {top: 100, bottom: 100, left: 100, right: 100};
+      const HLine = svgHLine - marginsLine.bottom - marginsLine.top;
+      const WLine = svgWLine - marginsLine.left - marginsLine.right;
 
       const svgLine = d3.select("#final")
         .append("svg")
@@ -397,7 +397,6 @@
             return(z.Type)
           })
           
-          //scales
 
           //scales
           const timelineScale = d3.scaleTime()
@@ -428,7 +427,7 @@
           .scale(colorLine)
 
         svgLine.append("g")
-          .attr("transform", `translate(${WLine + 150}, ${HLine/2})`)
+          .attr("transform", `translate(${WLine + 120}, ${HLine/2})`)
           .call(legendLine);
             
 
