@@ -1,0 +1,449 @@
+Year,Country,Imports
+1960,China,595
+1960,China,929
+1962,China,48
+1963,China,450
+1964,China,154
+1965,China,31
+1966,China,1
+1967,China,0
+1968,China,0
+1969,China,1
+1970,China,0
+1971,China,413
+1972,China,0
+1973,China,0
+1974,China,0
+1975,China,0
+1976,China,0
+1977,China,0
+1978,China,40
+1979,China,66
+1980,China,79
+1981,China,155
+1982,China,107
+1983,China,100
+1984,China,40
+1985,China,325
+1986,China,518
+1987,China,332
+1988,China,256
+1989,China,581
+1990,China,915
+1991,China,1009
+1992,China,647
+1993,China,1318
+1994,China,1365
+1995,China,1399
+1996,China,2036
+1997,China,1176
+1998,China,1955
+1999,China,2244
+2000,China,2305
+2001,China,1913
+2002,China,1792
+2003,China,1519
+2004,China,2049
+2005,China,2217
+2006,China,1127
+2007,China,1091
+2008,China,1551
+2009,China,2341
+2010,China,1656
+2011,China,2541
+2012,China,2183
+2013,China,4891
+2014,China,9859
+2015,China,5869
+2016,China,8104
+2017,China,8144
+2018,China,5181
+2019,China,5969
+2020,China,12049
+2021,China,8282
+2022,China,8582
+2023,China,8700
+1960,Saudi Arabia,39
+1960,Saudi Arabia,16
+1962,Saudi Arabia,54
+1963,Saudi Arabia,25
+1964,Saudi Arabia,20
+1965,Saudi Arabia,10
+1966,Saudi Arabia,40
+1967,Saudi Arabia,58
+1968,Saudi Arabia,14
+1969,Saudi Arabia,8
+1970,Saudi Arabia,25
+1971,Saudi Arabia,37
+1972,Saudi Arabia,45
+1973,Saudi Arabia,25
+1974,Saudi Arabia,12
+1975,Saudi Arabia,21
+1976,Saudi Arabia,95
+1977,Saudi Arabia,70
+1978,Saudi Arabia,421
+1979,Saudi Arabia,1020
+1980,Saudi Arabia,1775
+1981,Saudi Arabia,3325
+1982,Saudi Arabia,2270
+1983,Saudi Arabia,5100
+1984,Saudi Arabia,4700
+1985,Saudi Arabia,6625
+1986,Saudi Arabia,8957
+1987,Saudi Arabia,4899
+1988,Saudi Arabia,4714
+1989,Saudi Arabia,4162
+1990,Saudi Arabia,4367
+1991,Saudi Arabia,6590
+1992,Saudi Arabia,3431
+1993,Saudi Arabia,4308
+1994,Saudi Arabia,4235
+1995,Saudi Arabia,3876
+1996,Saudi Arabia,5887
+1997,Saudi Arabia,4026
+1998,Saudi Arabia,6100
+1999,Saudi Arabia,5900
+2000,Saudi Arabia,5100
+2001,Saudi Arabia,6200
+2002,Saudi Arabia,7650
+2003,Saudi Arabia,5700
+2004,Saudi Arabia,6500
+2005,Saudi Arabia,7100
+2006,Saudi Arabia,6200
+2007,Saudi Arabia,8000
+2008,Saudi Arabia,7700
+2009,Saudi Arabia,7200
+2010,Saudi Arabia,6200
+2011,Saudi Arabia,8600
+2012,Saudi Arabia,10200
+2013,Saudi Arabia,8500
+2014,Saudi Arabia,8200
+2015,Saudi Arabia,10400
+2016,Saudi Arabia,8400
+2017,Saudi Arabia,7700
+2018,Saudi Arabia,5700
+2019,Saudi Arabia,7300
+2020,Saudi Arabia,6100
+2021,Saudi Arabia,4700
+2022,Saudi Arabia,3100
+2023,Saudi Arabia,3600
+1960,European Union,
+1960,European Union,
+1962,European Union,
+1963,European Union,
+1964,European Union,
+1965,European Union,
+1966,European Union,
+1967,European Union,
+1968,European Union,
+1969,European Union,
+1970,European Union,
+1971,European Union,
+1972,European Union,
+1973,European Union,
+1974,European Union,
+1975,European Union,
+1976,European Union,
+1977,European Union,
+1978,European Union,
+1979,European Union,
+1980,European Union,
+1981,European Union,
+1982,European Union,
+1983,European Union,
+1984,European Union,
+1985,European Union,
+1986,European Union,
+1987,European Union,
+1988,European Union,
+1989,European Union,
+1990,European Union,
+1991,European Union,
+1992,European Union,
+1993,European Union,
+1994,European Union,
+1995,European Union,
+1996,European Union,
+1997,European Union,
+1998,European Union,
+1999,European Union,216
+2000,European Union,478
+2001,European Union,1329
+2002,European Union,1050
+2003,European Union,658
+2004,European Union,212
+2005,European Union,168
+2006,European Union,165
+2007,European Union,521
+2008,European Union,156
+2009,European Union,66
+2010,European Union,288
+2011,European Union,364
+2012,European Union,53
+2013,European Union,58
+2014,European Union,269
+2015,European Union,315
+2016,European Union,1279
+2017,European Union,979
+2018,European Union,1762
+2019,European Union,1080
+2020,European Union,1150
+2021,European Union,1247
+2022,European Union,2157
+2023,European Union,1700
+1960,Turkey,0
+1960,Turkey,0
+1962,Turkey,0
+1963,Turkey,0
+1964,Turkey,11
+1965,Turkey,0
+1966,Turkey,0
+1967,Turkey,0
+1968,Turkey,0
+1969,Turkey,0
+1970,Turkey,0
+1971,Turkey,0
+1972,Turkey,0
+1973,Turkey,83
+1974,Turkey,24
+1975,Turkey,4
+1976,Turkey,0
+1977,Turkey,0
+1978,Turkey,0
+1979,Turkey,18
+1980,Turkey,0
+1981,Turkey,0
+1982,Turkey,0
+1983,Turkey,606
+1984,Turkey,225
+1985,Turkey,0
+1986,Turkey,0
+1987,Turkey,130
+1988,Turkey,132
+1989,Turkey,339
+1990,Turkey,71
+1991,Turkey,21
+1992,Turkey,96
+1993,Turkey,150
+1994,Turkey,76
+1995,Turkey,59
+1996,Turkey,17
+1997,Turkey,147
+1998,Turkey,140
+1999,Turkey,69
+2000,Turkey,34
+2001,Turkey,29
+2002,Turkey,85
+2003,Turkey,171
+2004,Turkey,69
+2005,Turkey,52
+2006,Turkey,57
+2007,Turkey,246
+2008,Turkey,159
+2009,Turkey,156
+2010,Turkey,39
+2011,Turkey,46
+2012,Turkey,266
+2013,Turkey,476
+2014,Turkey,414
+2015,Turkey,127
+2016,Turkey,355
+2017,Turkey,774
+2018,Turkey,375
+2019,Turkey,1007
+2020,Turkey,1634
+2021,Turkey,2036
+2022,Turkey,1967
+2023,Turkey,500
+1960,Iran,28
+1960,Iran,10
+1962,Iran,0
+1963,Iran,10
+1964,Iran,1
+1965,Iran,5
+1966,Iran,1
+1967,Iran,0
+1968,Iran,0
+1969,Iran,0
+1970,Iran,21
+1971,Iran,206
+1972,Iran,8
+1973,Iran,120
+1974,Iran,178
+1975,Iran,134
+1976,Iran,250
+1977,Iran,350
+1978,Iran,450
+1979,Iran,400
+1980,Iran,300
+1981,Iran,325
+1982,Iran,650
+1983,Iran,445
+1984,Iran,600
+1985,Iran,445
+1986,Iran,70
+1987,Iran,202
+1988,Iran,466
+1989,Iran,609
+1990,Iran,387
+1991,Iran,0
+1992,Iran,174
+1993,Iran,388
+1994,Iran,356
+1995,Iran,190
+1996,Iran,772
+1997,Iran,403
+1998,Iran,376
+1999,Iran,950
+2000,Iran,822
+2001,Iran,322
+2002,Iran,0
+2003,Iran,661
+2004,Iran,1300
+2005,Iran,700
+2006,Iran,300
+2007,Iran,1000
+2008,Iran,1400
+2009,Iran,800
+2010,Iran,500
+2011,Iran,1700
+2012,Iran,1100
+2013,Iran,1100
+2014,Iran,1900
+2015,Iran,1700
+2016,Iran,2200
+2017,Iran,2700
+2018,Iran,3200
+2019,Iran,2300
+2020,Iran,3700
+2021,Iran,1700
+2022,Iran,1700
+2023,Iran,1900
+1960,Libya,45
+1960,Libya,3
+1962,Libya,0
+1963,Libya,5
+1964,Libya,0
+1965,Libya,17
+1966,Libya,19
+1967,Libya,53
+1968,Libya,48
+1969,Libya,74
+1970,Libya,151
+1971,Libya,121
+1972,Libya,143
+1973,Libya,74
+1974,Libya,28
+1975,Libya,58
+1976,Libya,5
+1977,Libya,125
+1978,Libya,125
+1979,Libya,120
+1980,Libya,135
+1981,Libya,135
+1982,Libya,375
+1983,Libya,155
+1984,Libya,365
+1985,Libya,710
+1986,Libya,479
+1987,Libya,649
+1988,Libya,451
+1989,Libya,740
+1990,Libya,725
+1991,Libya,239
+1992,Libya,653
+1993,Libya,686
+1994,Libya,255
+1995,Libya,46
+1996,Libya,653
+1997,Libya,291
+1998,Libya,248
+1999,Libya,200
+2000,Libya,144
+2001,Libya,261
+2002,Libya,188
+2003,Libya,341
+2004,Libya,276
+2005,Libya,248
+2006,Libya,58
+2007,Libya,166
+2008,Libya,296
+2009,Libya,582
+2010,Libya,179
+2011,Libya,183
+2012,Libya,573
+2013,Libya,681
+2014,Libya,1001
+2015,Libya,1324
+2016,Libya,1084
+2017,Libya,438
+2018,Libya,884
+2019,Libya,895
+2020,Libya,1043
+2021,Libya,535
+2022,Libya,1400
+2023,Libya,500
+1960,Total,5978
+1960,Total,7632
+1962,Total,5003
+1963,Total,7562
+1964,Total,7524
+1965,Total,8557
+1966,Total,6725
+1967,Total,6988
+1968,Total,7103
+1969,Total,8935
+1970,Total,11547
+1971,Total,13882
+1972,Total,12086
+1973,Total,8655
+1974,Total,7745
+1975,Total,9435
+1976,Total,11168
+1977,Total,10072
+1978,Total,10580
+1979,Total,10161
+1980,Total,13508
+1981,Total,14463
+1982,Total,15981
+1983,Total,15846
+1984,Total,17409
+1985,Total,17675
+1986,Total,18304
+1987,Total,18290
+1988,Total,19017
+1989,Total,18531
+1990,Total,19591
+1991,Total,19441
+1992,Total,16407
+1993,Total,18761
+1994,Total,15298
+1995,Total,13359
+1996,Total,17921
+1997,Total,12831
+1998,Total,17837
+1999,Total,17805
+2000,Total,16262
+2001,Total,17166
+2002,Total,16306
+2003,Total,14806
+2004,Total,16978
+2005,Total,17435
+2006,Total,14597
+2007,Total,18543
+2008,Total,18180
+2009,Total,17261
+2010,Total,15197
+2011,Total,21403
+2012,Total,22162
+2013,Total,23827
+2014,Total,30092
+2015,Total,27601
+2016,Total,30760
+2017,Total,27992
+2018,Total,27140
+2019,Total,29480
+2020,Total,37370
+2021,Total,28494
+2022,Total,30376
+2023,Total,28540
