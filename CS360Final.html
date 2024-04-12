@@ -2,6 +2,9 @@
 <html>
   <head>
     <title> CS360 Final Project </title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <script src = "https://d3js.org/topojson.v2.min.js"></script>
   </head>
   <style type="text/css">
   </style>
@@ -28,21 +31,203 @@
     </p>
   <h3> <center>About the Data </h3>
   <p><center>
-    The data collection is credited to the Economic Research Service of the Department of Agriculture (USDA) who provided the vast database on their website <a href ="https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/#Zipped%20CSV%20files"> USDA Feed Grains: Yearbook Tables </a>. Due to lack of time and project needs, the data used on this site is condensed from the original database. The original 35 tables have been filtered down into the 12 most relevent. The tables kept include:
+    The data collection is credited to the Economic Research Service of the Department of Agriculture (USDA) who provided the vast database on their website <a href ="https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/#Zipped%20CSV%20files"> USDA Feed Grains: Yearbook Tables </a>. Due to lack of time and project needs, the data used on this site is condensed from the original database through Numbers and cleaned through R-Studio. The original 35 tables have been filtered down into the 12 most relevent.
   </p>
   <p><center>
     Table 1: Farming Information
     <br>
-    Tables 4-7: Supply and Disappearance (One table per Grain)
+    Tables 4-7: Supply and Disappearance
     <br>
-    Tables 9-10: Farmer Prices (Corn and Sorghum split from Barley and Oats)
+    Tables 9-10: Farmer Prices
     <br>
-    Tables 18-19: US Exports (Corn and Sorghum split from Barley and Oats)
+    Tables 18-19: US Exports
     <br>
-    Tables 20-21: US Imports (Corn and Sorghum split from Barley and Oats)
+    Tables 20-21: US Imports
     <br>
-    Table 27: World Imports and Exports (Select Countries and Select Grains)
+    Table 27: World Imports and Exports
   </p>
+  <div id = "final"></div>
+  <script>
+    //Scatter Plot of Pricing Information Over Time
+    //function 
+    const svgH = 800;
+    const svgW = 1000;
+    const margins = {top: 150, bottom: 150, left: 150, right: 150};
+      const H = svgH - margins.bottom - margins.top;
+      const W = svgW - margins.left - margins.right;
 
+      const svg = d3.select("#final")
+        .append("svg")
+        .attr("height", svgH)
+        .attr("width", svgW);
+
+      const graphTime = svg.append("g")
+        .attr("transform", `translate(100, ${margins.top})`);
+
+        //Import Data 
+        d3.csv('https://raw.githubusercontent.com/Ahuynh111/CS360-Final-Project/main/pricingInformation.csv', function(d){
+          return{
+            Type: d.type,
+            Price: +d.weightedAveragePrice,
+            Date: d3.timeParse("%Y")(d.Years)
+          };
+        }).then(function(d1){
+
+          //group data
+          groupData = d3.group(d1, function(z){
+            return(z.Type)
+          })
+
+          
+          //scales
+          const timeScale = d3.scaleTime()
+            .domain(d3.extent(d1, function(z){
+              return(z.Date)
+            }))
+            .range([0,W]);
+
+          const priceScale = d3.scaleLinear()
+            .domain([0, d3.max(d1, function(z){
+              return(z.Price)
+            })])
+            .range([H,0]);
+
+        //Color and Legend
+        const colorScale = d3.scaleOrdinal()
+          .domain(["Barley", "Corn", "Oat", "Sorghum"])
+          .range(d3.schemeTableau10)
+
+        const legend = d3.legendColor()
+          .shape('rect')
+          .shapeWidth(10)
+          .shapeHeight(10)
+          .shapePadding(10)
+          .labelOffset(5)
+          .labelWrap(30)
+          .orient('vertical')
+          .scale(colorScale)
+
+        svg.append("g")
+          .attr("transform", `translate(${W + 150}, ${H/2})`)
+          .call(legend);
+            
+          //axes
+            graphTime.append("g")
+              .attr("transform", `translate(0,${H})`)
+              .call(d3.axisBottom(timeScale).ticks(10));
+
+            graphTime.append("g")
+              .attr("transform", `translate(0,0)`)
+              .call(d3.axisLeft(priceScale).ticks(10));
+    
+          //plotting
+          graphTime.selectAll(".circle")
+            .data(d1)
+            .enter()
+            .append("circle")
+            .attr("class", "circle")
+            .attr("cx", function(z){
+              return(timeScale(z.Date))
+            })
+            .attr("cy", function(z){
+              return(priceScale(z.Price))
+            })
+            .attr("r", 3)
+            .attr("fill", function(z){
+              return(colorScale(z.Type))
+            });
+
+
+          //labels
+            svg.append("text")
+              .text("Price")
+              .attr("x", 0)
+              .attr("y", svgH/2);
+            svg.append("text")
+              .text("Weighted Average Price Over Time (US Dollar/Bushel)")
+              .attr("x", W/2 - 50)
+              .attr("y", 100)
+        })
+//Scatter Plot of Barley Exports
+    //function 
+    const svgHBarley = 1200;
+    const svgWBarley = 1200;
+    const marginsBarley = {top: 150, bottom: 150, left: 150, right: 150};
+      const HBarley = svgHBarley - marginsBarley.bottom - marginsBarley.top;
+      const WBarley = svgWBarley - marginsBarley.left - marginsBarley.right;
+
+      const svgBarley = d3.select("#final")
+        .append("svg")
+        .attr("height", svgHBarley)
+        .attr("width", svgWBarley);
+
+      const graphMap = svgBarley.append("g")
+        .attr("transform", `translate(${-marginsBarley.left/2},${marginsBarley.top})`);
+          //Import Data
+        d3.csv('https://raw.githubusercontent.com/Ahuynh111/CS360-Final-Project/main/barleyWorldExports.csv', function(d){
+          return{ 
+            Exports: +d.Exports,
+            Country: d.Country, 
+            Date: d.Year
+          };
+        }).then(function(d1){
+
+          //filtering data
+          filteredData = d1.filter(function(z){
+              if(z.Date == "2023"){
+                return(z)
+              }
+            })
+
+          var map = new Map();
+          const projection = d3.geoAlbers().scale(100).center([0,100])
+          const path = d3.geoPath().projection(projection)
+          filteredData.forEach(function(z){
+            map.set(z.Country, z.Exports)
+          })
+
+          console.log(map)
+          //color scale
+          const colorBarley = d3.scaleThreshold()
+              .domain([0,2000,4000,6000,8000])
+              .range(d3.schemeGreens[5])
+
+          d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(create);
+
+          //creating map
+          function create(v){
+            console.log(v)
+            graphMap.append("g")
+            .selectAll("path")
+            .data(topojson.feature(v, v.objects.countries).features)
+            .enter()
+            .append("path")
+            .attr("stroke", "#5C4033")
+            .attr("fill", function(z){
+              return colorBarley(z.Exports = map.get(z.properties.name))
+            })
+            .attr("d", path)
+          }
+
+          //color legend 
+          const legend = d3.legendColor()
+              .shapeWidth(20)
+              .shapeHeight(20)
+              .shapePadding(0)
+              .orient("vertical")
+              .scale(colorBarley);
+              
+            graphMap.append("g")
+              .attr("transform", `translate(${WBarley},${HBarley/4})`)
+              .call(legend);
+          
+          //labels
+          graphMap.append("text")
+            .text("2023 Barley Exports to the US (Select Countries in 1000 Metric Tons)")
+            .attr("x", WBarley/2 - 175)
+            .attr("y", 10)        
+        })
+
+  </script>
   </body>
 </html>
