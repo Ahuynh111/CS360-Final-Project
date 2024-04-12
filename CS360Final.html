@@ -48,8 +48,7 @@
   </p>
   <div id = "final"></div>
   <script>
-    //Scatter Plot of Pricing Information Over Time
-    //function 
+  //Scatter Plot of Pricing Information Over Time
     const svgH = 800;
     const svgW = 1000;
     const margins = {top: 150, bottom: 150, left: 150, right: 150};
@@ -72,11 +71,6 @@
             Date: d3.timeParse("%Y")(d.Years)
           };
         }).then(function(d1){
-
-          //group data
-          groupData = d3.group(d1, function(z){
-            return(z.Type)
-          })
 
           
           //scales
@@ -148,21 +142,20 @@
               .attr("x", W/2 - 50)
               .attr("y", 100)
         })
-//Scatter Plot of Barley Exports
-    //function 
-    const svgHBarley = 1200;
-    const svgWBarley = 1200;
-    const marginsBarley = {top: 150, bottom: 150, left: 150, right: 150};
-      const HBarley = svgHBarley - marginsBarley.bottom - marginsBarley.top;
-      const WBarley = svgWBarley - marginsBarley.left - marginsBarley.right;
+  //Chloropleth of Barley Exporters
+    const svgHMap = 600;
+    const svgWMap = 1200;
+    const marginsMap = {top: 150, bottom: 150, left: 150, right: 150};
+      const HMap = svgHMap - marginsMap.bottom - marginsMap.top;
+      const WMap = svgWMap - marginsMap.left - marginsMap.right;
 
-      const svgBarley = d3.select("#final")
+      const svgMap = d3.select("#final")
         .append("svg")
-        .attr("height", svgHBarley)
-        .attr("width", svgWBarley);
+        .attr("height", svgHMap)
+        .attr("width", svgWMap);
 
-      const graphMap = svgBarley.append("g")
-        .attr("transform", `translate(${-marginsBarley.left/2},${marginsBarley.top})`);
+      const graphMap = svgMap.append("g")
+        .attr("transform", `translate(${-marginsMap.left/2},${marginsMap.top})`);
           //Import Data
         d3.csv('https://raw.githubusercontent.com/Ahuynh111/CS360-Final-Project/main/barleyWorldExports.csv', function(d){
           return{ 
@@ -188,7 +181,7 @@
 
           console.log(map)
           //color scale
-          const colorBarley = d3.scaleThreshold()
+          const colorMap = d3.scaleThreshold()
               .domain([0,2000,4000,6000,8000])
               .range(d3.schemeGreens[5])
 
@@ -204,7 +197,7 @@
             .append("path")
             .attr("stroke", "#5C4033")
             .attr("fill", function(z){
-              return colorBarley(z.Exports = map.get(z.properties.name))
+              return colorMap(z.Exports = map.get(z.properties.name))
             })
             .attr("d", path)
           }
@@ -215,19 +208,279 @@
               .shapeHeight(20)
               .shapePadding(0)
               .orient("vertical")
-              .scale(colorBarley);
+              .scale(colorMap);
               
             graphMap.append("g")
-              .attr("transform", `translate(${WBarley},${HBarley/4})`)
+              .attr("transform", `translate(${WMap},${HMap/4})`)
               .call(legend);
           
           //labels
           graphMap.append("text")
             .text("2023 Barley Exports to the US (Select Countries in 1000 Metric Tons)")
-            .attr("x", WBarley/2 - 175)
+            .attr("x", WMap/2 - 175)
             .attr("y", 10)        
         })
+  //Bar Chart of US Imports and US Exports 
+    const svgHBar = 600;
+    const svgWBar = 1200;
+    const marginsBar = {top: 150, bottom: 150, left: 150, right: 150};
+      const HBar = svgHBar - marginsBar.bottom - marginsBar.top;
+      const WBar = svgWBar - marginsBar.left - marginsBar.right;
+      const padding = 50;
 
+      const svgBar = d3.select("#final")
+        .append("svg")
+        .attr("height", svgHBar)
+        .attr("width", svgWBar);
+
+      const graphBar = svgBar.append("g")
+        .attr("transform", `translate(${marginsBar.left},${marginsBar.top})`);
+          //Import Data
+        d3.csv('https://raw.githubusercontent.com/Ahuynh111/CS360-Final-Project/main/Exports.csv', function(d){
+          return{ 
+            Date: d.Years,
+            Annual: +d.Annual,
+            Type: d.type
+          };
+        }).then(function(d1){
+          d3.csv(`https://raw.githubusercontent.com/Ahuynh111/CS360-Final-Project/main/Imports.csv`, function(t){
+            return{
+              Date: t.Years,
+              Annual: +t.Annual,
+              Type: t.type
+            }
+          }).then(function(t1){
+
+            var current = "2023"
+
+            //filtering data
+          filteredExportData = d1.filter(function(z){
+              if(z.Date == current){
+                return(z)
+              }
+            })
+
+          filteredImportData = t1.filter(function(z){
+            if(z.Date == current){
+              return(z)
+            }
+          })
+
+
+          //scales
+           // Y-axis - Grain type
+            grainScale = d3.scaleBand()
+              .domain(d1.map(function(z){
+                return(z.Type)
+              }))
+              .range([0,HBar]);
+
+            //Exports
+              exportScale = d3.scaleLinear()
+                .domain([0, d3.max(d1, function(z){
+                  return(z.Annual)
+                })])
+                .range([0, WBar/2]);
+
+            //Imports 
+              importScale = d3.scaleLinear()
+                .domain([0, d3.max(t1, function(z){
+                  return(z.Annual)
+                })])
+                .range([0, WBar/2]);
+
+            //colors
+
+
+
+          //append axes
+               //exports
+            graphBar.append("g")
+              .attr("transform", `translate(0, 0)`)
+              .call(d3.axisLeft(grainScale));
+
+            graphBar.append("g")
+              .attr("transform", `translate(0, ${HBar})`)
+              .call(d3.axisBottom(exportScale).ticks(5));
+
+              //imports
+            graphBar.append("g")
+              .attr("transform", `translate(${WBar/2+ padding}, 0)`)
+              .call(d3.axisLeft(grainScale));
+
+           graphBar.append("g")
+              .attr("transform", `translate(${WBar/2 + padding}, ${HBar})`)
+              .call(d3.axisBottom(importScale).ticks(5));
+
+        //graphing
+          //Export
+            graphBar.selectAll(".rectExport")
+              .data(filteredExportData)
+              .enter()
+              .append("rect")
+              .attr("class", "rectExport")
+              .attr("x", 0)
+              .attr("y", function(z){
+                return(grainScale(z.Type))
+              })
+              .attr("height", 50)
+              .attr("width", function(z){
+                return(exportScale(z.Annual))
+              })
+              .attr("fill", "#5C4033")
+          //Import
+            graphBar.selectAll(".rectImport")
+              .data(filteredImportData)
+              .enter()
+              .append("rect")
+              .attr("class", "rectImport")
+              .attr("x", WBar/2 + padding)
+              .attr("y", function(z){
+                return(grainScale(z.Type))
+              })
+              .attr("height", 50)
+              .attr("width", function(z){
+                return(importScale(z.Annual))
+              })
+              .attr("fill", "#5C4033")
+
+
+          //labels
+            graphBar.append("text")
+              .text("Exports to US in " + current)
+              .attr("x", WBar - 725)
+              .attr("y", -20)
+           graphBar.append("text")
+              .text("Total Bushels")
+              .attr("x", WBar - 725)
+              .attr("y", HBar + 75)
+
+            graphBar.append("text")
+              .text("Imports to US in " + current)
+              .attr("x", WBar - 225)
+              .attr("y", -20)
+
+            graphBar.append("text")
+              .text("Total Bushels")
+              .attr("x", WBar - 225)
+              .attr("y", HBar + 75)
+          })
+
+        })
+  //Timeline Chart of US Imports and US Exports
+      const svgHLine = 800;
+      const svgWLine = 1100;
+      const marginsLine = {top: 70, bottom: 70, left: 70, right: 70};
+      const HLine = svgH - marginsLine.bottom - marginsLine.top;
+      const WLine = svgW - marginsLine.left - marginsLine.right;
+
+      const svgLine = d3.select("#final")
+        .append("svg")
+        .attr("height", svgHLine)
+        .attr("width", svgWLine);
+
+      const graphLine = svgLine.append("g")
+        .attr("transform", `translate(100, ${marginsLine.top})`);
+
+      //Import Data --> no Sorghum due to lack of data
+        d3.csv('https://raw.githubusercontent.com/Ahuynh111/CS360-Final-Project/main/FarmingInformation.csv', function(d){
+          return{
+            Yield: +d.yieldBushelsAcre,
+            Type: d.type,
+            Date: d3.timeParse("%Y")(d.startingYear)
+          };
+        }).then(function(d1){
+
+
+          //group data
+          groupData = d3.group(d1, function(z){
+            return(z.Type)
+          })
+          
+          //scales
+
+          //scales
+          const timelineScale = d3.scaleTime()
+            .domain(d3.extent(d1, function(z){
+              return(z.Date)
+            }))
+            .range([0,WLine]);
+
+          const yieldScale = d3.scaleLinear()
+            .domain([0, d3.max(d1, function(z){
+              return(z.Yield)
+            })])
+            .range([HLine,0]);
+
+        //Color and Legend
+        const colorLine = d3.scaleOrdinal()
+          .domain(["Barley", "Corn", "Oat"])
+          .range(d3.schemeTableau10)
+
+        const legendLine = d3.legendColor()
+          .shape('rect')
+          .shapeWidth(10)
+          .shapeHeight(10)
+          .shapePadding(10)
+          .labelOffset(5)
+          .labelWrap(30)
+          .orient('vertical')
+          .scale(colorLine)
+
+        svgLine.append("g")
+          .attr("transform", `translate(${WLine + 150}, ${HLine/2})`)
+          .call(legendLine);
+            
+
+
+          //axes
+            graphLine.append("g")
+              .attr("transform", `translate(0,${HLine})`)
+              .call(d3.axisBottom(timelineScale));
+
+            graphLine.append("g")
+              .attr("transform", `translate(0,0)`)
+              .call(d3.axisLeft(yieldScale).ticks(10));
+    
+          //plotting
+           const path = d3.line()
+              .x(function(z){
+                return(xScale(z.Date));
+              })
+              .y(function(z){
+                return(yScale(z.Yield));
+              })
+
+
+            graphLine.selectAll(".line")
+              .data(groupData)
+              .join("path")
+              .attr("stroke", function(z){
+                return colorLine(z[0])
+              })
+              .attr("stroke-width", 2)
+              .attr("d", function(z){
+                return d3.line()
+                  .x(function(x){
+                    return(timelineScale(x.Date))
+                  })
+                  .y(function(y){
+                    return(yieldScale(y.Yield))
+                  })
+                  (z[1])
+              })
+              .attr("fill", "none")
+
+          //labels
+            svgLine.append("text")
+              .text("Bushels")
+              .attr("x", 0)
+              .attr("y", svgHLine/2);
+            svgLine.append("text")
+              .text("Average Yield Over Time (Bushels/Acre)")
+              .attr("x", WLine/2 - 30)
+              .attr("y", 50)
+        })
   </script>
   </body>
 </html>
