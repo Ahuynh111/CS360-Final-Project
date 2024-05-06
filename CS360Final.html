@@ -11,6 +11,10 @@
 
   </head>
   <style type="text/css">
+    .article{
+      margin-right: 50px;
+      margin-left: 50px;
+    }
   </style>
   <body>
     <font color = #5C4033>
@@ -19,48 +23,31 @@
     //page set up 
     const scroll = scrollama();
   </script>
-  <section id = "introduction">
-    <h1> <center> US Grains - A Visual Exploration</h1>
+  <section id = "introduction" class = "article">
+    <h1> <center> US Feed Grains - A Visual Exploration</h1>
      <h6>
     <center> 
         University of San Francisco | CS360 Data Visualization Final Project <br>
-        Annie Huynh | ahuynh8@dons.usfca.edu | huynhn.annie@gmail.com </em>
+        Annie Huynh | ahuynh8@dons.usfca.edu </em>
   </h6>
     <p> <center>
       This site intends to visualize different metrics on feed grains in the United States. The data spans across roughly 30 years given by the United States Department of Agriculture. While the dataset offers data for a handful of different feed grains, this project will only focus on corn, barley, sorghum, and oats. This project does not intend to completely educate on the United State's feed grain economy, but rather give a very general statistical overview through data visualization. We intend to answer the following:
     </p>
     <p><center>
-      1. How have US imports and exports changed across three decades?
+      1. How have prices changed across three decades?
       <br>
-      2. How have prices changed across three decades?
+      2. How does growth look like overtime for each feed grain yield in the US?
       <br>
-      3. How does growth look like overtime for each grain yield in the US?
+      3. How have US imports and exports changed across three decades?
       
     </p>
-  <h3> <center>About the Data </h3>
-  <p><center>
-    The data collection is credited to the Economic Research Service of the Department of Agriculture (USDA) who provided the vast database on their website <a href ="https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/#Zipped%20CSV%20files"> USDA Feed Grains: Yearbook Tables </a>. Due to lack of time and project needs, the data used on this site is condensed from the original database through Numbers and cleaned through R-Studio. The original 35 tables have been filtered down into the 12 most relevent.
-  </p>
-  <p><center>
-    Table 1: Farming Information
-    <br>
-    Tables 4-7: Supply and Disappearance
-    <br>
-    Tables 9-10: Farmer Prices
-    <br>
-    Tables 18-19: US Exports
-    <br>
-    Tables 20-21: US Imports
-    <br>
-    Table 27: World Imports and Exports
-  </p>
   </section>
-  <section id = "prices">
+  <section id = "prices" class = "article">
     <div id = "pricesDIV"></div>
       <script >
       //Scatter Plot of Pricing Information Over Time
       var svgH = 650;
-      var svgW = 1400;
+      var svgW = 1300;
       var margins = {top: 100, bottom: 100, left: 100, right: 100};
       var pad = 50
       var H = 500
@@ -99,7 +86,7 @@
         //Color and Legend
         var colorScale = d3.scaleOrdinal()
           .domain(["Barley", "Corn", "Oat", "Sorghum"])
-          .range(d3.schemeTableau10)
+          .range(["#d45800", "#c88435", "#400000", "#83766c"])
 
         var legend = d3.legendColor()
           .shape('rect')
@@ -131,10 +118,13 @@
               .enter()
               .append("div")
               .style("opacity", 1)
+              .html("Hover over each point!")
+              .style("left", svgW/2 +350 + "px")
+              .style("top",  H + 100 + "px")
               .attr("class", "tooltip")
               .style("position", "absolute")
               .style("background-color", "#CCC5B5")
-              .style("border", "dotted")
+              .style("border", "none")
               .style("border-color", "#5C4033")
               .style("padding", "10px")
               .style("font-size", "20px")
@@ -182,8 +172,8 @@
               condensedDate = String(z.Date).substring(11,15)
               tool
                 .html("Average Price of " + z.Type + " in " + condensedDate +": $" + z.Price +"/bushel")
-                .style("left", svgW/2 +250 + "px")
-                .style("top",  H + 300 + "px")
+                .style("left", svgW/2 +300 + "px")
+                .style("top",  H + 100 + "px")
                 .style("opacity", 1)
             })
 
@@ -198,14 +188,16 @@
               .attr("y", -30)
       })
       </script>
+      <article>
       <p>The average weighted price for each of the four grains grows exponentially over time. Every grain's price follows the same growth pattern including the peaks at the 1920s, mid 1940s, and the steady growth 1980s onwards. Overall, there is a positive correlation between time and price per bushel increase that is consistent across all grains. This may be correlated to inflating prices in all economic sectors, and insinuates higher demand due to a the evergrowing population.</p>
       <p> The data has been processed through relabelling of years to just reflect the starting year of the agricultural period. The average weighted price per bushel for each grain was selected out of the two tables and combined into one larger csv file in R.</p>
+      </article>
   </section>
-  <section id = farming>
+  <section id = farming class = "article">
     <div id = "farmingDIV">
       <script>
       var svgHFarm = 650;
-      var svgWFarm = 1400;
+      var svgWFarm = 1300;
       var margins = {top: 100, bottom: 100, left: 100, right: 100};
       var pad = 50
       var HFarm = 500
@@ -251,7 +243,7 @@
         //Color and Legend
         var colorLine = d3.scaleOrdinal()
           .domain(["Barley", "Corn", "Oat"])
-          .range(d3.schemeTableau10)
+          .range(["#d45800", "#c88435", "#400000", "#83766c"])
 
         var legendLine = d3.legendColor()
           .shape('rect')
@@ -268,11 +260,14 @@
               .data(d1)
               .enter()
               .append("div")
+              .html("Move brown line to select a year!")
+              .style("left", svgWFarm/2 +350 + "px")
+              .style("top",  HFarm + 900 + "px")
               .style("opacity", 1)
               .attr("class", "tooltip")
               .style("position", "absolute")
               .style("background-color", "#CCC5B5")
-              .style("border", "dotted")
+              .style("border", "none")
               .style("border-color", "#5C4033")
               .style("padding", "10px")
               .style("font-size", "20px")
@@ -286,7 +281,7 @@
               .attr("class", "tooltip")
               .style("position", "absolute")
               .style("background-color", "#CCC5B5")
-              .style("border", "dotted")
+              .style("border", "none")
               .style("border-color", "#5C4033")
               .style("padding", "10px")
               .style("font-size", "20px")
@@ -371,37 +366,37 @@
             const statement = function(v){
               z = currentYear(v)
               if(z>1800 && z <=1880){
-                return("pre-1880 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>American Civil War 1861-1865<br><br>Department of Agriculture Founded 1862<br><br>Industrialization in the US 1865 - 1889")
               }else if (z > 1880 && z <= 1890){
-                return("1880 - 1890 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Assassination of James Garfield 1881<br><br>Statue of Liberty given to US  by France 1885")
               }else if(z > 1890 && z <= 1900){
-                return("1890 - 1900 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Panic of 1893<br><br>Plessy V. Ferguson 1896<br><br>Spanish-American War 1898")
               }else if(z > 1900 && z <= 1910){
-                return("1900 - 1910 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Reclamation Act 1902<br><br>Pure Food and Drug Act 1906<br><br>San Francisco Earthquake 1906")
               }else if(z > 1910 && z <= 1920){
-                return("1910 - 1920 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Start of WWI 1914<br><br>Start of Hybrid Corn 1915<br><br>Biotechnology 1919")
               }else if(z > 1920 && z <= 1930){
-                return("1920 - 1930 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Roaring 20s 1920-1929<br><br>End of WWI 1921<br><br>Start of Great Depression 1929")
               }else if(z > 1930 && z <= 1940){
-                return("1930 - 1940 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>New Deal 1933-1939<br><br>Agricultural Adjustment Act 1933<br><br>Dust Bowl 1934")
               }else if(z > 1940 && z <= 1950){
-                return("1940 - 1950 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>US Involvement in WWII 1941<br><br>End of WWII 1945")
               }else if(z > 1950 && z <= 1960){
-                return("1950 - 1960 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Korean War 1950 - 1953<br><br>Agricultural Research Service Founded 1953")
               }else if(z > 1960 && z <= 1970){
-                return("1960 - 1970 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Vietnam War Starts 1964<br><br>Food Stamp Act 1964<br><br>Food and Agriculture Act 1965")
               }else if(z > 1970 && z <= 1980){
-                return("1970 - 1980 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Clean Water Act 1972<br><br>Vietnam War Ends 1975")
               }else if(z > 1980 && z <= 1990){
-                return("1980 - 1990 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Agricultural Credit Act 1987<br><br>Major US Drought 1988<br><br>Global Warming Concerns 1988")
               }else if(z > 1990 && z <= 2000){
-                return("1990 - 2000 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Start of GMO Produce 1994<br><br>Freedom to Farm Act 1995")
               }else if(z > 2000 && z <= 2010){
-                return("2000 - 2010 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>September 11th Attack 2001<br><br>The Great Recession 2007-2009")
               }else if(z > 2010 && z <= 2020){
-                return("2010 - 2020 List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Hurricanes 2012-2017<br><br>Federal Agriculture Reform and Risk Management Act 2013")
               }else if(z > 2020){
-                return("2020+ List of Historical Events")
+                return("<b>Historical Events <br><br> </b>Start of Coronavirus 2020")
               }
             }
 
@@ -412,8 +407,8 @@
               .attr("stroke", "#5C4033")
               .attr("stroke-width", 4)
               .attr("opacity", "0.5")
-              .attr("x1", 0)
-              .attr("x2", 0)
+              .attr("x1", WFarm/2)
+              .attr("x2", WFarm/2)
               .attr("y1", 0)
               .attr("y2", HFarm)
               .call(d3.drag().on("drag", function(z){
@@ -436,14 +431,14 @@
                     }
                   })
                   toolFarm1
-                    .html("Current Year: " + currentYear(z.x)) 
-                    .style("left", svgWFarm/2 +350 + "px")
-                    .style("top",  HFarm + 1100 + "px")
+                    .html("<b>Current Year: " + currentYear(z.x)) 
+                    .style("left", WFarm/2 + 90 + "px")
+                    .style("top",  HFarm + 575 + "px")
                     .style("opacity", 1)
                   toolFarm2
                     .html(statement(z.x))
                     .style("left", svgWFarm/2 +300 + "px")
-                    .style("top",  HFarm + 1200 + "px")
+                    .style("top",  HFarm + 800 + "px")
                     .style("opacity", 1)
                 }))
         })
@@ -451,11 +446,11 @@
       <p>Average Yield over time has a positive correlation starting at about the 1960s and onwards. We can see a generally positive growth trend for all grain yields included. At the data's earliest in the 1800s to the beginning of the 1960s, we cann see that grain yiels stayed at about twenty to thirty bushels per acre. However, this may due to lack of data or lack of quality data collection. Interestingly, grain yield for corn grew the most and had the steepest trend overall. Barley and oats followed one another very closely. Sorghum was ommited from this chart due to lack of data.</p>
   </section>
   <section id = ie>
-    <div id = "ieDIV">
+    <div id = "ieDIV" class = "article">
       <script>
       //Bar Chart of US Imports and US Exports 
       var svgHBar = 550;
-      var svgWBar = 1400;
+      var svgWBar = 1300;
       var marginsBar = {top: 100, bottom: 100, left: 100, right: 100};
       var HBar = 250
       var WBar = 1000
@@ -528,7 +523,7 @@
 
 
             //initial current year
-            var current = "2023" //default to 1990
+            var current = "1990" //default to 1990
 
                 //exports
                   filteredExportData = d1.filter(function(z){
@@ -636,8 +631,8 @@
               }
 
             graphBar.append("g")
-              .attr("transform", `translate(${svgWBar - 1400}, 400)`)
-              .call(d3.axisBottom(time).ticks(4));
+              .attr("transform", `translate(${svgWBar - 1300}, 400)`)
+              .call(d3.axisBottom(time).ticks(5));
 
             //yearLabel
             var yearLabel = d3.select("#ieDIV")
@@ -646,17 +641,18 @@
               .attr("class", "tooltip")
               .style("position", "absolute")
               .style("background-color", "#CCC5B5")
-              .style("border", "dotted")
+              .style("border", "none")
               .style("border-color", "#5C4033")
               .style("padding", "10px")
               .style("font-size", "20px")
               .style("color", "#5C4033")
               .html(current)
-              .style("left", svgWBar/2 - 25 + "px")
-              .style("top",  2450 + "px")
+              .style("left", svgWBar/2 + 50 + "px")
+              .style("top",  svgHBar + 1700 + "px")
 
             const circle = graphBar.append("circle")
-              .attr("stroke", "#5C4033")
+              .attr("stroke", "#CC5500")
+              .attr("fill", "#CC5500")
               .attr("r", 4)
               .attr("cx", svgWBar/4)
               .attr("cy", 400)
@@ -708,94 +704,11 @@
       <p>
         Looking above to the yield chart, we can see why corn is the highest in exports. Corn yield had the highest growth above barley and oat. Barley and oats had very similar yields and relatively stay similar in terms of exports. 
       </p>
-  </section>
-  <section id = map>
-    <div id = mapDIV>
-      <script>
-      var svgHMap = 800;
-      var svgWMap = 1400;
-      var marginsMap = {top: 100, bottom: 100, left: 150, right: 100};
-      var HMap = 500
-      var WMap = 1200
-
-      var svgMap = d3.select("#mapDIV")
-        .append("svg")
-        .attr("height", svgHMap)
-        .attr("width", svgWMap);
-
-      var graphMap = svgMap.append("g")
-        .attr("transform", `translate(${-marginsMap.left/2},${marginsMap.top})`);
-          //Import Data
-        d3.csv('https://raw.githubusercontent.com/Ahuynh111/CS360-Final-Project/main/barleyWorldExports.csv', function(d){
-          return{ 
-            Exports: +d.Exports,
-            Country: d.Country, 
-            Date: d.Year
-          };
-        }).then(function(d1){
-
-          //filtering data
-          filteredData = d1.filter(function(z){
-              if(z.Date == "2023"){
-                return(z)
-              }
-            })
-
-          var map = new Map();
-          const projection = d3.geoAlbers().scale(100).center([0,100])
-          const path = d3.geoPath().projection(projection)
-          filteredData.forEach(function(z){
-            map.set(z.Country, z.Exports)
-          })
-
-          console.log(map)
-          //color scale
-          const colorMap = d3.scaleThreshold()
-              .domain([0,2000,4000,6000,8000])
-              .range(d3.schemeGreens[5])
-
-          d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(create);
-
-          //creating map
-          function create(v){
-            console.log(v)
-            graphMap.append("g")
-            .selectAll("path")
-            .data(topojson.feature(v, v.objects.countries).features)
-            .enter()
-            .append("path")
-            .attr("stroke", "#5C4033")
-            .attr("fill", function(z){
-              return colorMap(z.Exports = map.get(z.properties.name))
-            })
-            .attr("d", path)
-          }
-
-          //color legend 
-          var legend = d3.legendColor()
-              .shapeWidth(20)
-              .shapeHeight(20)
-              .shapePadding(0)
-              .orient("vertical")
-              .scale(colorMap);
-              
-            graphMap.append("g")
-              .attr("transform", `translate(${WMap},${HMap/4})`)
-              .call(legend);
-          
-          //labels
-          graphMap.append("text")
-            .text("2023 Barley Exports to the US (Select Countries in 1000 Metric Tons)")
-            .attr("x", svgW/2 - 100)
-            .attr("y", -30)        
-        })
-      </script>
-  </section>
-  <section id = cornHeat>
+  <section id = cornHeat class = "article">
       <div id = "cornHeatDiv">
         <script>
           var svgHHeat = 650;
-          var svgWHeat = 1400;
+          var svgWHeat = 1300;
           var marginsHeat = {top: 100, bottom: 100, left: 150, right: 100};
           var HHeat = 500
           var WHeat = 1200
@@ -811,7 +724,7 @@
           //Import Data
         d3.csv('https://raw.githubusercontent.com/Ahuynh111/gist-practice/main/cornWorldExports.csv', function(d){
           return{ 
-            Exports: +d.Exports,
+            Exports: +d.Exports * 1000,
             Country: d.Country, 
             Date: d.Year
           };
@@ -819,7 +732,7 @@
 
           //filtering data 
           filteredData = d1.filter(function(z){
-              if(z.Date > 1990 && z.Country != "Total"){
+              if(z.Date > 1990 && z.Country != "Total" && z.Country != "South Africa" && z.Country != "Paraguay" && z.Country != "European Union" && z.Country != "Russia"){
                 return(z)
               }
             })
@@ -840,44 +753,44 @@
 
           //axes
             graphHeat.append("g")
-              .attr("transform", `translate(200,${HHeat})`)
+              .attr("transform", `translate(125,${HHeat})`)
               .call(d3.axisBottom(exportCorn).ticks(12));
 
             graphHeat.append("g")
-              .attr("transform", `translate(220,0)`)
+              .attr("transform", `translate(145,0)`)
               .call(d3.axisLeft(country).ticks(10));
 
           //color scale
-            var colorScale = d3.scaleSequential(d3.interpolateOranges)
-              .domain([d3.min(filteredData, function(z){
-                return(z.Exports);
-              }), d3.max(filteredData, function(z){
-                return(z.Exports)
-              })]);
+            var colorScale = d3.scaleThreshold()
+              .domain([0,20000000, 30000000, 40000000, 50000000, 60000000, 70000000, 80000000])
+              .range(["#fff5eb", "#fee6ce", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801","#8c2d04"])
 
           //color legend
             var legend = d3.legendColor()
               .shapeWidth(10)
               .shapeHeight(10)
               .shapePadding(5)
-              .labelFormat(".0f")
+              .labelFormat(".2s")
               .labelOffset(5)
-              .title("1000 metric tons")
+              .title("Metric Tons")
               .orient("vertical")
               .scale(colorScale);
               
             graphHeat.append("g")
-              .attr("transform", `translate(${svgWHeat - 80},150)`)
+              .attr("transform", `translate(${svgWHeat - 200},50)`)
               .call(legend);
 
           //tooltips
             var cornTool = d3.select("#cornHeatDiv")
               .append("div")
               .style("opacity", 1)
+              .html("Hover over the boxes!")
+              .style("left", WHeat/2 + 550 + "px")
+              .style("top", 2950+ "px")
               .attr("class", "tooltip")
               .style("position", "absolute")
               .style("background-color", "#CCC5B5")
-              .style("border", "dotted")
+              .style("border", "none")
               .style("border-color", "#5C4033")
               .style("padding", "10px")
               .style("font-size", "20px")
@@ -898,7 +811,7 @@
               })
               .attr("width",exportCorn.bandwidth() - 2)
               .attr("height",country.bandwidth() - 2)
-              .attr("transform", `translate(201,0)`)
+              .attr("transform", `translate(126,1)`)
               .attr("fill", function(z){
                 return(colorScale(z.Exports))
               })
@@ -916,25 +829,75 @@
               })
               .on('mousemove', function(e, z){
                 cornTool
-                .html("<center>" + z.Date  + " </center> " + z.Country + ":  "+ z.Exports)
-                .style("left", (e.x + 20) + "px")
-                .style("top", (e.y + 3450) + "px")
+                .html("<center>" + z.Date  + " </center> " + z.Country + ":  "+  d3.format(",")(z.Exports))
+                .style("left", WHeat/2 + 570 + "px")
+                .style("top", 3050+ "px")
               })
 
               //labels
             svgHeat.append("text")
-              .text("Country")
-              .attr("x", 20)
-              .attr("y", svgHHeat/2);
-            svgHeat.append("text")
-              .text("Corn Exports (1000 Metric Tons) - Select Countries")
-              .attr("x", WHeat/2 - 100)
-              .attr("y", 50)
+              .text("Corn Exports - Select Countries")
+              .attr("x", WHeat/2 - 150)
+              .attr("y", 70)
         })
         </script>
         <p>
           Continuing with the United State's significance in corn exports, we decided to show where the US stands amongst select countries over time. We can see that the United States dominates above the other countries, and have primarily been the leading exporter since 1990s. However, this may be due to lack of data collection ability overseas 30 years ago. We can see that beginning in 2012, Brazil, Ukraine, and Argentina increase exports. While they don't match with the United States, we can expect a closer competition in future years as there seems to be a positive correlation with exports and each consecutive year.
         </p>
+  </section>
+  <section id = outro class = "article">
+      <h3> <center>Methodology</h3>
+  <p><center>
+    The data collection is credited to the Economic Research Service of the Department of Agriculture (USDA) who provided the vast database on their website <a href ="https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/#Zipped%20CSV%20files"> USDA Feed Grains: Yearbook Tables </a>. Due to lack of time and project needs, the data used on this site is condensed from the original database through Numbers and cleaned through R-Studio. Data cleaning and filtering included condensing agricultural years down to the initial year to avoid clutter and for simplicity. In R-studio, we utilized the tidyverse library and stringr library. Individual tables for each grain were worked on and combined into a larger csv file for the specific category (i.e prices). The original 35 tables have been filtered down into the 11 most relevent.
+  </p>
+  <p><center>
+    Table 1: Farming Information
+    <br>
+    Tables 4-7: Supply and Disappearance
+    <br>
+    Tables 9-10: Farmer Prices
+    <br>
+    Tables 18-19: US Exports
+    <br>
+    Tables 20-21: US Imports
+  </p>
+    <h3> <center>Historical Dates Sources</center></h3>
+    <p align = left> <font size = 1>
+      1. “14 Major Events of the 2010s.” History.Com, A&E Television Networks, www.history.com/news/2010s-decade-major-events. Accessed 6 May 2024. <br>
+      2. “26 Decade-Defining Events in U.S. History.” Encyclopædia Britannica, Encyclopædia Britannica, inc., www.britannica.com/story/25-decade-defining-events-in-us-history. Accessed 6 May 2024. <br>
+      3. “About the U.S. Department of Agriculture.” USDA, www.usda.gov/our-agency/about-usda#:~:text=On%20May%2015%2C%201862%2C%20President,economic%20development%2C%20science%2C%20natural%20resource. Accessed 6 May 2024. <br>
+      4. Agricultural Adjustment Act - New Georgia Encyclopedia, www.georgiaencyclopedia.org/articles/business-economy/agricultural-adjustment-act/. Accessed 6 May 2024. <br>
+      5. “American Civil War.” Encyclopædia Britannica, Encyclopædia Britannica, inc., 3 May 2024, www.britannica.com/event/American-Civil-War. <br>
+      6. America’s Wars, www.va.gov/opa/publications/factsheets/fs_americas_wars.pdf. Accessed 6 May 2024. 
+      7. Center for Food Safety and Applied Nutrition. “Science and History of Gmos and Other Food Modification Processes.” U.S. Food and Drug Administration, FDA, www.fda.gov/food/agricultural-biotechnology/science-and-history-gmos-and-other-food-modification-processes#:~:text=1994%3A%20The%20first%20GMO%20produce,safe%20as%20traditionally%20bred%20tomatoes. Accessed 6 May 2024. <br>
+      8. “Climate Change History.” History.Com, A&E Television Networks, www.history.com/topics/natural-disasters-and-environment/history-of-climate-change#1988-global-warming-gets-real. Accessed 6 May 2024. <br>
+      9. Downsizinggovernment.Org, www.downsizinggovernment.org/agriculture/timeline. Accessed 6 May 2024. <br>
+      10. “The End of World War II 1945: The National WWII Museum: New Orleans.” The National WWII Museum | New Orleans, 7 May 1970, www.nationalww2museum.org/war/topics/ <br>end-world-war-ii-1945#:~:text=Truman%20announced%20Japan’s%20surrender%20and,Japan%20Day%20(V%2DJ%20Day). 
+      11. EPA, Environmental Protection Agency, www.epa.gov/laws-regulations/summary-clean-water-act. Accessed 6 May 2024. <br>
+      12. “Explore by Timeline.” GSA, www.gsa.gov/real-estate/historic-preservation/explore-historic-buildings/explore-by-timeline. Accessed 6 May 2024. <br>
+      13. “The Federal Civil Service and the Death of President James A. Garfield (U.S. National Park Service).” National Parks Service, U.S. Department of the Interior, www.nps.gov/articles/000/the-federal-civil-service-and-the-death-of-president-james-a-garfield.htm. Accessed 6 May 2024. <br>
+      14. “The Federal Register.” Federal Register :: Request Access, www.federalregister.gov/agencies/agricultural-research-service#:~:text=The%20 Agricultural%20Research%20Service%20(ARS,Department%20of%20Agriculture%20(USDA). Accessed 6 May 2024. <br>
+      15. “Food Stamp Act.” California Homeless Education and Technical Assistance Center, www.hetac.org/statutes/federal/fsa#:~:text=The%20Food%20Stamp%20Act%20authorizes,and%20move%20towards%20self%2Dsufficiency. Accessed 6 May 2024. 
+      16. GovInfo, www.govinfo.gov/app/details/COMPS-12449. Accessed 6 May 2024. <br>
+      17. H.R.2195 - 104th Congress (1995-1996): Freedom To Farm Act of 1995 | Congress.Gov | Library of Congress, www.congress.gov/bill/104th-congress/house-bill/2195. Accessed 6 May 2024. <br>
+      18. “Historical View of U.S. Agriculture: Crop Protections, Sustainability, and Pesticide Policy.” CropLife America, www.croplifeamerica.org/history. Accessed 6 May 2024. <br>
+      19. “House Committee on Agriculture.” House Committee On Agriculture, Chairman GT Thompson, agriculture.house.gov/. Accessed 6 May 2024. <br>
+      20. Jason Gauthier, History Staff. “1880 Fast Facts - History - U.S. Census Bureau.” United States Census Bureau, www.census.gov/history/www/through_the_decades/fast_facts/1880_fast_facts.html. Accessed 6 May 2024. <br>
+      21. Jason Gauthier, History Staff. “1900 Fast Facts - History - U.S. Census Bureau.” United States Census Bureau, www.census.gov/history/www/through_the_decades/fast_facts/1900_fast_facts.html. Accessed 6 May 2024. <br>
+      22. McNamara, Robert. “Timeline of Noteworthy Events of the 1890s.” ThoughtCo, ThoughtCo, 28 Feb. 2021, www.thoughtco.com/timeline-from-1890-to-1900-1774042. <br>
+      23. “National Reclamation Act (1902).” The Oregon Encyclopedia, www.oregonencyclopedia.org/articles/national_reclamation_act_1902_/#:~:text=Sometimes%20referred%20to%20as%20the,lands%20to%20finance%20the%20projects. Accessed 6 May 2024. <br>
+      24. “New Deal.” Encyclopædia Britannica, Encyclopædia Britannica, inc., 29 Mar. 2024, www.britannica.com/event/New-Deal. <br>
+      25. Oh, Leena. “1988 U.S. Drought/Heatwave.” Homeland Security Digital Library, 17 Apr. 2024, www.hsdl.org/c/timeline/1988-u-s-droughtheatwave/. <br>
+      26. “Pure Food and Drug Act.” Encyclopædia Britannica, Encyclopædia Britannica, inc., www.britannica.com/topic/Pure-Food-and-Drug-Act. Accessed 6 May 2024. <br>
+      27. Richardson, Gary. “The Great Depression.” Federal Reserve History, www.federalreservehistory.org/essays/great-depression#:~:text=1929%E2%80%931941,World%20War%20II%20in%201941. Accessed 6 May 2024. <br>
+      28. “A Scientific Revolution: Eugene Funk and Hybrid Corn.” McLean County Museum of History, mchistory.org/digital-exhibits/farming-in-the-great-corn-belt/working-the-land/a-scientific-revolution-eugene-funk-and-hybrid-corn#:~:text=In%201916%20Funks%20produced%20its,shipment%20to%20customers%2C%20circa%201925. Accessed 6 May 2024. <br>
+      29. “Spanish-American War.” Encyclopædia Britannica, Encyclopædia Britannica, inc., 14 Apr. 2024, www.britannica.com/event/Spanish-American-War. <br>
+      30. “Timeline (1914 - 1921)  :  A World at War  :  Articles and Essays  :  Stars and Stripes: The American Soldiers’ Newspaper of World War I, 1918-1919  :  Digital Collections  :  Library of Congress.” The Library of Congress, www.loc.gov/collections/stars-and-stripes/articles-and-essays/a-world-at-war/timeline-1914-1921/. Accessed 6 May 2024. <br>
+      31. Timeline of United States History (1900-1929), stateoftheunion.onetwothree.net/timelines/Timeline_US_hist_1900-1929.html. Accessed 6 May 2024. <br>
+      32. United States Holocaust Memorial Museum, United States Holocaust Memorial Museum, encyclopedia.ushmm.org/content/en/article/world-war-ii-key-dates. Accessed 6 May 2024. <br>
+      33. Verma, Ashish Swarup, et al. “Biotechnology in the Realm of History.” Journal of Pharmacy & Bioallied Sciences, U.S. National Library of Medicine, July 2011, www.ncbi.nlm.nih.gov/pmc/articles/PMC3178936/#:~:text=The%20term%20biotechnology%20was%20used,a%20Hungarian%20Engineer%2C%20in%201919. <br>
+      34. Weinberg, John. “The Great Recession and Its Aftermath.” Federal Reserve History, www.federalreservehistory.org/essays/great-recession-and-its-aftermath. Accessed 6 May 2024. 
+     </font></p>
   </section>
   </body>
 </html>
