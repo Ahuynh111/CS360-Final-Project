@@ -25,11 +25,11 @@
   </script>
   <section id = "introduction" class = "article">
     <h1> <center> US Feed Grains - A Visual Exploration</h1>
-     <h6>
+     <h5>
     <center> 
         University of San Francisco | CS360 Data Visualization Final Project <br>
         Annie Huynh | ahuynh8@dons.usfca.edu </em>
-  </h6>
+    </h5>
     <p> <center>
       This site intends to visualize different metrics on feed grains in the United States. The data spans across roughly 30 years given by the United States Department of Agriculture. While the dataset offers data for a handful of different feed grains, this project will only focus on corn, barley, sorghum, and oats. This project does not intend to completely educate on the United State's feed grain economy, but rather give a very general statistical overview through data visualization. We intend to answer the following:
     </p>
@@ -445,7 +445,7 @@
       </script>
       <p>Average Yield over time has a positive correlation starting at about the 1960s and onwards. We can see a generally positive growth trend for all grain yields included. At the data's earliest in the 1800s to the beginning of the 1960s, we cann see that grain yiels stayed at about twenty to thirty bushels per acre. However, this may due to lack of data or lack of quality data collection. Interestingly, grain yield for corn grew the most and had the steepest trend overall. Barley and oats followed one another very closely. Sorghum was ommited from this chart due to lack of data.</p>
   </section>
-  <section id = ie>
+  <section id = ie >
     <div id = "ieDIV" class = "article">
       <script>
       //Bar Chart of US Imports and US Exports 
@@ -704,7 +704,7 @@
       <p>
         Looking above to the yield chart, we can see why corn is the highest in exports. Corn yield had the highest growth above barley and oat. Barley and oats had very similar yields and relatively stay similar in terms of exports. 
       </p>
-  <section id = cornHeat class = "article">
+  <section id = cornHeat >
       <div id = "cornHeatDiv">
         <script>
           var svgHHeat = 650;
@@ -845,12 +845,12 @@
           Continuing with the United State's significance in corn exports, we decided to show where the US stands amongst select countries over time. We can see that the United States dominates above the other countries, and have primarily been the leading exporter since 1990s. However, this may be due to lack of data collection ability overseas 30 years ago. We can see that beginning in 2012, Brazil, Ukraine, and Argentina increase exports. While they don't match with the United States, we can expect a closer competition in future years as there seems to be a positive correlation with exports and each consecutive year.
         </p>
   </section>
-  <section id = outro class = "article">
+  <section id = outro>
       <h3> <center>Methodology</h3>
-  <p><center>
+    <p><center>
     The data collection is credited to the Economic Research Service of the Department of Agriculture (USDA) who provided the vast database on their website <a href ="https://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables/#Zipped%20CSV%20files"> USDA Feed Grains: Yearbook Tables </a>. Due to lack of time and project needs, the data used on this site is condensed from the original database through Numbers and cleaned through R-Studio. Data cleaning and filtering included condensing agricultural years down to the initial year to avoid clutter and for simplicity. In R-studio, we utilized the tidyverse library and stringr library. Individual tables for each grain were worked on and combined into a larger csv file for the specific category (i.e prices). The original 35 tables have been filtered down into the 11 most relevent.
-  </p>
-  <p><center>
+    </p>
+    <p><center>
     Table 1: Farming Information
     <br>
     Tables 4-7: Supply and Disappearance
@@ -860,43 +860,42 @@
     Tables 18-19: US Exports
     <br>
     Tables 20-21: US Imports
-  </p>
-    <h3> <center>Historical Dates Sources</center></h3>
+    </p>
+      <h3> <center>Historical Dates Sources</center></h3>
     <p align = left> <font size = 1>
-      1. “14 Major Events of the 2010s.” History.Com, A&E Television Networks, www.history.com/news/2010s-decade-major-events. Accessed 6 May 2024. <br>
-      2. “26 Decade-Defining Events in U.S. History.” Encyclopædia Britannica, Encyclopædia Britannica, inc., www.britannica.com/story/25-decade-defining-events-in-us-history. Accessed 6 May 2024. <br>
-      3. “About the U.S. Department of Agriculture.” USDA, www.usda.gov/our-agency/about-usda#:~:text=On%20May%2015%2C%201862%2C%20President,economic%20development%2C%20science%2C%20natural%20resource. Accessed 6 May 2024. <br>
-      4. Agricultural Adjustment Act - New Georgia Encyclopedia, www.georgiaencyclopedia.org/articles/business-economy/agricultural-adjustment-act/. Accessed 6 May 2024. <br>
-      5. “American Civil War.” Encyclopædia Britannica, Encyclopædia Britannica, inc., 3 May 2024, www.britannica.com/event/American-Civil-War. <br>
-      6. America’s Wars, www.va.gov/opa/publications/factsheets/fs_americas_wars.pdf. Accessed 6 May 2024. 
-      7. Center for Food Safety and Applied Nutrition. “Science and History of Gmos and Other Food Modification Processes.” U.S. Food and Drug Administration, FDA, www.fda.gov/food/agricultural-biotechnology/science-and-history-gmos-and-other-food-modification-processes#:~:text=1994%3A%20The%20first%20GMO%20produce,safe%20as%20traditionally%20bred%20tomatoes. Accessed 6 May 2024. <br>
-      8. “Climate Change History.” History.Com, A&E Television Networks, www.history.com/topics/natural-disasters-and-environment/history-of-climate-change#1988-global-warming-gets-real. Accessed 6 May 2024. <br>
-      9. Downsizinggovernment.Org, www.downsizinggovernment.org/agriculture/timeline. Accessed 6 May 2024. <br>
-      10. “The End of World War II 1945: The National WWII Museum: New Orleans.” The National WWII Museum | New Orleans, 7 May 1970, www.nationalww2museum.org/war/topics/ <br>end-world-war-ii-1945#:~:text=Truman%20announced%20Japan’s%20surrender%20and,Japan%20Day%20(V%2DJ%20Day). 
-      11. EPA, Environmental Protection Agency, www.epa.gov/laws-regulations/summary-clean-water-act. Accessed 6 May 2024. <br>
-      12. “Explore by Timeline.” GSA, www.gsa.gov/real-estate/historic-preservation/explore-historic-buildings/explore-by-timeline. Accessed 6 May 2024. <br>
-      13. “The Federal Civil Service and the Death of President James A. Garfield (U.S. National Park Service).” National Parks Service, U.S. Department of the Interior, www.nps.gov/articles/000/the-federal-civil-service-and-the-death-of-president-james-a-garfield.htm. Accessed 6 May 2024. <br>
-      14. “The Federal Register.” Federal Register :: Request Access, www.federalregister.gov/agencies/agricultural-research-service#:~:text=The%20 Agricultural%20Research%20Service%20(ARS,Department%20of%20Agriculture%20(USDA). Accessed 6 May 2024. <br>
-      15. “Food Stamp Act.” California Homeless Education and Technical Assistance Center, www.hetac.org/statutes/federal/fsa#:~:text=The%20Food%20Stamp%20Act%20authorizes,and%20move%20towards%20self%2Dsufficiency. Accessed 6 May 2024. 
-      16. GovInfo, www.govinfo.gov/app/details/COMPS-12449. Accessed 6 May 2024. <br>
-      17. H.R.2195 - 104th Congress (1995-1996): Freedom To Farm Act of 1995 | Congress.Gov | Library of Congress, www.congress.gov/bill/104th-congress/house-bill/2195. Accessed 6 May 2024. <br>
-      18. “Historical View of U.S. Agriculture: Crop Protections, Sustainability, and Pesticide Policy.” CropLife America, www.croplifeamerica.org/history. Accessed 6 May 2024. <br>
-      19. “House Committee on Agriculture.” House Committee On Agriculture, Chairman GT Thompson, agriculture.house.gov/. Accessed 6 May 2024. <br>
-      20. Jason Gauthier, History Staff. “1880 Fast Facts - History - U.S. Census Bureau.” United States Census Bureau, www.census.gov/history/www/through_the_decades/fast_facts/1880_fast_facts.html. Accessed 6 May 2024. <br>
-      21. Jason Gauthier, History Staff. “1900 Fast Facts - History - U.S. Census Bureau.” United States Census Bureau, www.census.gov/history/www/through_the_decades/fast_facts/1900_fast_facts.html. Accessed 6 May 2024. <br>
-      22. McNamara, Robert. “Timeline of Noteworthy Events of the 1890s.” ThoughtCo, ThoughtCo, 28 Feb. 2021, www.thoughtco.com/timeline-from-1890-to-1900-1774042. <br>
-      23. “National Reclamation Act (1902).” The Oregon Encyclopedia, www.oregonencyclopedia.org/articles/national_reclamation_act_1902_/#:~:text=Sometimes%20referred%20to%20as%20the,lands%20to%20finance%20the%20projects. Accessed 6 May 2024. <br>
-      24. “New Deal.” Encyclopædia Britannica, Encyclopædia Britannica, inc., 29 Mar. 2024, www.britannica.com/event/New-Deal. <br>
-      25. Oh, Leena. “1988 U.S. Drought/Heatwave.” Homeland Security Digital Library, 17 Apr. 2024, www.hsdl.org/c/timeline/1988-u-s-droughtheatwave/. <br>
-      26. “Pure Food and Drug Act.” Encyclopædia Britannica, Encyclopædia Britannica, inc., www.britannica.com/topic/Pure-Food-and-Drug-Act. Accessed 6 May 2024. <br>
-      27. Richardson, Gary. “The Great Depression.” Federal Reserve History, www.federalreservehistory.org/essays/great-depression#:~:text=1929%E2%80%931941,World%20War%20II%20in%201941. Accessed 6 May 2024. <br>
-      28. “A Scientific Revolution: Eugene Funk and Hybrid Corn.” McLean County Museum of History, mchistory.org/digital-exhibits/farming-in-the-great-corn-belt/working-the-land/a-scientific-revolution-eugene-funk-and-hybrid-corn#:~:text=In%201916%20Funks%20produced%20its,shipment%20to%20customers%2C%20circa%201925. Accessed 6 May 2024. <br>
-      29. “Spanish-American War.” Encyclopædia Britannica, Encyclopædia Britannica, inc., 14 Apr. 2024, www.britannica.com/event/Spanish-American-War. <br>
-      30. “Timeline (1914 - 1921)  :  A World at War  :  Articles and Essays  :  Stars and Stripes: The American Soldiers’ Newspaper of World War I, 1918-1919  :  Digital Collections  :  Library of Congress.” The Library of Congress, www.loc.gov/collections/stars-and-stripes/articles-and-essays/a-world-at-war/timeline-1914-1921/. Accessed 6 May 2024. <br>
-      31. Timeline of United States History (1900-1929), stateoftheunion.onetwothree.net/timelines/Timeline_US_hist_1900-1929.html. Accessed 6 May 2024. <br>
-      32. United States Holocaust Memorial Museum, United States Holocaust Memorial Museum, encyclopedia.ushmm.org/content/en/article/world-war-ii-key-dates. Accessed 6 May 2024. <br>
-      33. Verma, Ashish Swarup, et al. “Biotechnology in the Realm of History.” Journal of Pharmacy & Bioallied Sciences, U.S. National Library of Medicine, July 2011, www.ncbi.nlm.nih.gov/pmc/articles/PMC3178936/#:~:text=The%20term%20biotechnology%20was%20used,a%20Hungarian%20Engineer%2C%20in%201919. <br>
-      34. Weinberg, John. “The Great Recession and Its Aftermath.” Federal Reserve History, www.federalreservehistory.org/essays/great-recession-and-its-aftermath. Accessed 6 May 2024. 
+      1. “14 Major Events of the 2010s.” History.Com, A&E Television Networks, <a href = https://www.history.com/news/2010s-decade-major-events>www.history.com</a>. <br>
+      2. “26 Decade-Defining Events in U.S. History.” Encyclopædia Britannica, Encyclopædia Britannica, inc., <a href = https://www.britannica.com/story/25-decade-defining-events-in-us-history>www.britannica.com</a>. <br>
+      3. “About the U.S. Department of Agriculture.” USDA, <a href = https://www.usda.gov/our-agency/about-usda#:~:text=On%20May%2015%2C%201862%2C%20President,economic%20development%2C%20science%2C%20natural%20resource>https://www.usda.gov</a>.<br>
+      4. Agricultural Adjustment Act - New Georgia Encyclopedia, <a href = https://www.georgiaencyclopedia.org/articles/business-economy/agricultural-adjustment-act/>www.georgiaencyclopedia.org</a>. <br>
+      5. “American Civil War.” Encyclopædia Britannica, Encyclopædia Britannica, inc., <a href = https://www.britannica.com/event/American-Civil-War>www.britannica.com</a>. <br>
+      6. America’s Wars, <a href = https://www.va.gov/opa/publications/factsheets/fs_americas_wars.pdf>www.va.gov</a>. 
+      7. Center for Food Safety and Applied Nutrition. “Science and History of Gmos and Other Food Modification Processes.” U.S. Food and Drug Administration, FDA, <a href = https://www.fda.gov/food/agricultural-biotechnology/science-and-history-gmos-and-other-food-modification-processes#:~:text=1994%3A%20The%20first%20GMO%20produce,safe%20as%20traditionally%20bred%20tomatoes>www.fda.gov</a>. <br>
+      8. “Climate Change History.” History.Com, A&E Television Networks, <a href = https://www.history.com/topics/natural-disasters-and-environment/history-of-climate-change#1988-global-warming-gets-real>www.history.com</a>. <br>
+      9. Downsizinggovernment.org, <a href = https://www.downsizinggovernment.org/agriculture/timeline>www.downsizinggovernment.org</a>. <br>
+      10. “The End of World War II 1945: The National WWII Museum: New Orleans.” The National WWII Museum | New Orleans, 7 May 1970, <a href = https://www.nationalww2museum.org/war/topics/end-world-war-ii-1945#:~:text=Truman%20announced%20Japan’s%20surrender%20and,Japan%20Day%20(V%2DJ%20Day)>www.nationalww2museum.org</a>. <br>
+      11. EPA, Environmental Protection Agency, <a href = https://www.epa.gov/laws-regulations/summary-clean-water-act>www.epa.gov</a>. <br>
+      12. “Explore by Timeline.” GSA, <a href = https://www.gsa.gov/real-estate/historic-preservation/explore-historic-buildings/explore-by-timeline>www.gsa.gov</a>. <br>
+      13. “The Federal Civil Service and the Death of President James A. Garfield (U.S. National Park Service).” National Parks Service, U.S. Department of the Interior, <a href = https://www.nps.gov/articles/000/the-federal-civil-service-and-the-death-of-president-james-a-garfield.htm>www.nps.gov</a>. <br>
+      14. “The Federal Register.” Federal Register :: Request Access, <a href = https://www.federalregister.gov/agencies/agricultural-research-service#:~:text=The%20 Agricultural%20Research%20Service%20(ARS,Department%20of%20Agriculture%20(USDA)>www.federalregister.gov</a>. <br>
+      15. “Food Stamp Act.” California Homeless Education and Technical Assistance Center, <a href = https://www.hetac.org/statutes/federal/fsa#:~:text=The%20Food%20Stamp%20Act%20authorizes,and%20move%20towards%20self%2Dsufficiency>www.hetac.org</a>. <br> 
+      16. GovInfo, <a href = https://www.govinfo.gov/app/details/COMPS-12449>www.govinfo.gov</a>. <br>
+      17. H.R.2195 - 104th Congress (1995-1996): Freedom To Farm Act of 1995 | Congress.Gov | Library of Congress, <a href = https://www.congress.gov/bill/104th-congress/house-bill/2195>www.congress.gov</a>. <br>
+      18. “Historical View of U.S. Agriculture: Crop Protections, Sustainability, and Pesticide Policy.” CropLife America, <a href = https://www.croplifeamerica.org/history>www.croplifeamerica.org</a>. <br>
+      19. “House Committee on Agriculture.” House Committee On Agriculture, Chairman GT Thompson, <a href = https://agriculture.house.gov/>agriculture.house.gov</a>. <br>
+      20. Jason Gauthier, History Staff. “1900 Fast Facts - History - U.S. Census Bureau.” United States Census Bureau, <a href = https://www.census.gov/history/www/through_the_decades/fast_facts/1900_fast_facts.html>www.census.gov</a>. <br>
+      21. McNamara, Robert. “Timeline of Noteworthy Events of the 1890s.” ThoughtCo, ThoughtCo, 28 Feb. 2021, <a href = https://www.thoughtco.com/timeline-from-1890-to-1900-1774042>www.thoughtco.com</a>. <br>
+      22. “National Reclamation Act (1902).” The Oregon Encyclopedia, <a href = https://www.oregonencyclopedia.org/articles/national_reclamation_act_1902_/#:~:text=Sometimes%20referred%20to%20as%20the,lands%20to%20finance%20the%20projects>www.oregonencyclopedia.org</a>. <br>
+      23. “New Deal.” Encyclopædia Britannica, Encyclopædia Britannica, inc., 29 Mar. 2024, <a href = https://www.britannica.com/event/New-Deal>www.britannica.com</a>. <br>
+      24. Oh, Leena. “1988 U.S. Drought/Heatwave.” Homeland Security Digital Library, 17 Apr. 2024, <a href = https://www.hsdl.org/c/timeline/1988-u-s-droughtheatwave/>www.hsdl.org</a>. <br>
+      25. “Pure Food and Drug Act.” Encyclopædia Britannica, Encyclopædia Britannica, inc., <a href = https://www.britannica.com/topic/Pure-Food-and-Drug-Act>www.britannica.com</a>. <br>
+      26. Richardson, Gary. “The Great Depression.” Federal Reserve History, <a href = https://www.federalreservehistory.org/essays/great-depression#:~:text=1929%E2%80%931941,World%20War%20II%20in%201941>www.federalreservehistory.org</a>. <br>
+      27. “A Scientific Revolution: Eugene Funk and Hybrid Corn.” McLean County Museum of History, <a href = https://mchistory.org/digital-exhibits/farming-in-the-great-corn-belt/working-the-land/a-scientific-revolution-eugene-funk-and-hybrid-corn#:~:text=In%201916%20Funks%20produced%20its,shipment%20to%20customers%2C%20circa%201925>mchistory.org</a>. <br>
+      28. “Spanish-American War.” Encyclopædia Britannica, Encyclopædia Britannica, inc., 14 Apr. 2024, <a href = https://www.britannica.com/event/Spanish-American-War>www.britannica.com</a>. <br>
+      29. “Timeline (1914 - 1921)  :  A World at War  :  Articles and Essays  :  Stars and Stripes: The American Soldiers’ Newspaper of World War I, 1918-1919  :  Digital Collections  :  Library of Congress.” The Library of Congress, <a href = https://www.loc.gov/collections/stars-and-stripes/articles-and-essays/a-world-at-war/timeline-1914-1921/>www.loc.gov</a>. <br>
+      30. Timeline of United States History (1900-1929), <a href = https://stateoftheunion.onetwothree.net/timelines/Timeline_US_hist_1900-1929.html>stateoftheunion.onetwothree.net</a>. <br>
+      31. United States Holocaust Memorial Museum, United States Holocaust Memorial Museum, <a href = https://encyclopedia.ushmm.org/content/en/article/world-war-ii-key-dates>encyclopedia.ushmm.org</a>. <br>
+      32. Verma, Ashish Swarup, et al. “Biotechnology in the Realm of History.” Journal of Pharmacy & Bioallied Sciences, U.S. National Library of Medicine, July 2011, <a href = https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3178936/#:~:text=The%20term%20biotechnology%20was%20used,a%20Hungarian%20Engineer%2C%20in%201919>www.ncbi.nlm.nih.gov</a>. <br>
+      33. Weinberg, John. “The Great Recession and Its Aftermath.” Federal Reserve History, <a href = https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath>www.federalreservehistory.org</a>. 
      </font></p>
   </section>
   </body>
