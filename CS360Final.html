@@ -16,19 +16,20 @@
   <body>
     <font color = #5C4033>
     <body bgcolor=#CCC5B5>
-  <script>
-  </script>
+      <!-- Section 1: Introduction 
+           This section includes all introductory information of 
+           assignment, author, and purpose. --> 
   <section id = "introduction" class = "article"> 
     <h1> <center> US Feed Grains - A Visual Exploration</h1>
      <h5>
-    <center> 
+    <center> <!-- assignment and author info -->
         University of San Francisco | CS360 Data Visualization Final Project <br>
         Annie Huynh | ahuynh8@dons.usfca.edu </em>
     </h5>
-    <p> <center>
+    <p> <center> <!-- project purpose info -->
       This site intends to visualize different metrics on feed grains in the United States. The data spans across roughly 30 years given by the United States Department of Agriculture. While the dataset offers data for a handful of different feed grains, this project will only focus on corn, barley, sorghum, and oats. This project does not intend to completely educate on the United State's feed grain economy, but rather give a very general statistical overview through data visualization. We intend to answer the following:
     </p>
-    <p><center>
+    <p><center> <!-- project objectives/primary questions -->
       1. How have prices changed across three decades?
       <br>
       2. How does growth look like overtime for each feed grain yield in the US?
@@ -37,6 +38,9 @@
       
     </p>
   </section>
+      <!-- Section 2: Prices 
+           This section holds the first visual plotting prices for each feed grain over time using a scatter plot.
+           This section utilizes d3 hovering mechanics as well as tool tips. --> 
   <section id = "prices" class = "article">
     <div id = "pricesDIV"></div>
       <script >
@@ -189,6 +193,14 @@
       <p> The data has been processed through relabelling of years to just reflect the starting year of the agricultural period. The average weighted price per bushel for each grain was selected out of the two tables and combined into one larger csv file in R.</p>
       </article>
   </section>
+      <!-- Section 3: Farming 
+           This section holds the second visual plotting grain yield for each feed grain, except sorghum, over time using a line graph.
+           This section utilizes d3 dragging mechanics as well as tool tips.
+           Function: statement()
+                Given a year input, statement() will provide list of text of historical events of the decade
+                the given year is from. Users cannot access this function and is only used internally. 
+           Function: currentYear()
+                Given time data, currentYear() will take four characters that correspond to the year and return a string of the 4 numbers. Users cannot access this function and is only used internally. --> 
   <section id = farming class = "article">
     <div id = "farmingDIV">
       <script>
@@ -350,7 +362,7 @@
               .attr("x", WFarm/2 - 100)
               .attr("y", -30)
 
-          //statement() function --> bring in important dates of that decade
+          //helpful functions
 
             var currentYear = function(x){
                 if (String(timelineScale.invert(x)).substring(11,15) > 2023){
@@ -360,6 +372,7 @@
                 }else{
                   return(String(timelineScale.invert(x)).substring(11,15))                  }
                 }
+
             const statement = function(v){
               z = currentYear(v)
               if(z>1800 && z <=1880){
@@ -442,6 +455,13 @@
       </script>
       <p>Average Yield over time has a positive correlation starting at about the 1960s and onwards. We can see a generally positive growth trend for all grain yields included. At the data's earliest in the 1800s to the beginning of the 1960s, we cann see that grain yiels stayed at about twenty to thirty bushels per acre. However, this may due to lack of data or lack of quality data collection. Interestingly, grain yield for corn grew the most and had the steepest trend overall. Barley and oats followed one another very closely. Sorghum was ommited from this chart due to lack of data.</p>
   </section>
+      <!-- Section 4: Imports and Exports  
+           This section holds the third visual plotting imports and exports of each grain. Imports and exports have their own separate bar graphs.
+           This section utilizes d3 dragging mechanics.
+           Function: currentYear()
+                Given time data, currentYear() will take four characters that correspond to the year and return a string of the 4 numbers. Users cannot access this function and is only used internally.
+           Function redraw()
+                When called, redraw will recreate the both bar graphs based on the given year. Users cannot access this function and is only used internally. -->
   <section id = ie >
     <div id = "ieDIV" class = "article">
       <script>
@@ -702,6 +722,10 @@
       <p>
         Looking above to the yield chart, we can see why corn is the highest in exports. Corn yield had the highest growth above barley and oat. Barley and oats had very similar yields and relatively stay similar in terms of exports. 
       </p>
+  </section>
+     <!-- Section 5: Corn Exports 
+           This section holds the fourth visual plotting exports of corn in a heatmap with other select countries.
+           This section utilizes d3 hovering mechanics and tooltips. -->
   <section id = cornHeat >
       <div id = "cornHeatDiv">
         <script>
@@ -845,6 +869,9 @@
           Continuing with the United State's significance in corn exports, we decided to show where the US stands amongst select countries over time. We can see that the United States dominates above the other countries, and have primarily been the leading exporter since 1990s. However, this may be due to lack of data collection ability overseas 30 years ago. We can see that beginning in 2012, Brazil, Ukraine, and Argentina increase exports. While they don't match with the United States, we can expect a closer competition in future years as there seems to be a positive correlation with exports and each consecutive year.
         </p>
   </section>
+    <!-- Section 6: Introduction 
+         This section includes all outro information of 
+         methodology and sources for all historical events shown on the website. --> 
   <section id = outro>
       <h3> <center>Methodology</h3>
     <p><center>
