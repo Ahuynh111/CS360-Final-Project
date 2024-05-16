@@ -4,9 +4,6 @@
     <title> CS360 Final Project </title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-    <script src = "https://d3js.org/topojson.v2.min.js"></script>
-    <script src="https://unpkg.com/scrollama"
-            composer require drupal/scrollama:^1.1>
     </script>
 
   </head>
@@ -20,10 +17,8 @@
     <font color = #5C4033>
     <body bgcolor=#CCC5B5>
   <script>
-    //page set up 
-    const scroll = scrollama();
   </script>
-  <section id = "introduction" class = "article">
+  <section id = "introduction" class = "article"> 
     <h1> <center> US Feed Grains - A Visual Exploration</h1>
      <h5>
     <center> 
@@ -46,6 +41,7 @@
     <div id = "pricesDIV"></div>
       <script >
       //Scatter Plot of Pricing Information Over Time
+      //SVG setup
       var svgH = 650;
       var svgW = 1300;
       var margins = {top: 100, bottom: 100, left: 100, right: 100};
@@ -196,6 +192,7 @@
   <section id = farming class = "article">
     <div id = "farmingDIV">
       <script>
+        //SVG setup
       var svgHFarm = 650;
       var svgWFarm = 1300;
       var margins = {top: 100, bottom: 100, left: 100, right: 100};
@@ -449,6 +446,7 @@
     <div id = "ieDIV" class = "article">
       <script>
       //Bar Chart of US Imports and US Exports 
+      //SVG setup
       var svgHBar = 550;
       var svgWBar = 1300;
       var marginsBar = {top: 100, bottom: 100, left: 100, right: 100};
@@ -707,6 +705,8 @@
   <section id = cornHeat >
       <div id = "cornHeatDiv">
         <script>
+          //Heat map of corn exports for the US and select countries
+          //SVG Setup
           var svgHHeat = 650;
           var svgWHeat = 1300;
           var marginsHeat = {top: 100, bottom: 100, left: 150, right: 100};
@@ -730,7 +730,7 @@
           };
         }).then(function(d1){
 
-          //filtering data 
+          //filtering data to remove non-similar countries 
           filteredData = d1.filter(function(z){
               if(z.Date > 1990 && z.Country != "Total" && z.Country != "South Africa" && z.Country != "Paraguay" && z.Country != "European Union" && z.Country != "Russia"){
                 return(z)
